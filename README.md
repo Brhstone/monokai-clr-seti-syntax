@@ -1,4 +1,8 @@
-# Seti Syntax
+# Monokai Clr Seti Syntax
+
+Seti syntax colored like monokai (sublime?), keeping a majority of the Seti Syntax tweaks!
+
+# Original work = Seti Syntax
 
 A subtle dark colored syntax theme for Atom. [Seti UI](https://atom.io/themes/seti-ui) also available.
 
