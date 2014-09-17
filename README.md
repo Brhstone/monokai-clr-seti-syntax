@@ -1,1 +1,15 @@
-Fork of [Seti Syntax](https://github.com/jesseweed/seti-syntax). Text colorized as Monokai and added markdown syntax coloring. Still a work in progress.
+# Monokai Clr Seti Syntax
+
+Seti syntax colored like monokai (sublime?), keeping a majority of the Seti Syntax tweaks!
+
+# Original work = Seti Syntax
+
+A subtle dark colored syntax theme for Atom. [Seti UI](https://atom.io/themes/seti-ui) also available.
+
+![Screenshot](https://github.com/jesseweed/seti-syntax/raw/master/screenshot.png)
+
+
+### Custom Icons
+[ ![Screenshot](https://github.com/jesseweed/seti-syntax/raw/master/_icons/circular/circular-128x128.png) ](_icons/circular/)
+[ ![Screenshot](https://github.com/jesseweed/seti-syntax/raw/master/_icons/rounded/rounded-128x128.png) ](_icons/rounded/)
+[ ![Screenshot](https://github.com/jesseweed/seti-syntax/raw/master/_icons/squared/squared-128x128.png) ](_icons/squared/)
