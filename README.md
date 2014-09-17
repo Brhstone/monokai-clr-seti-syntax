@@ -2,7 +2,7 @@
 
 Seti syntax colored like monokai (sublime?), keeping a majority of the Seti Syntax tweaks!
 
-# Original work = Seti Syntax
+# Original work = [Seti Syntax](https://github.com/jesseweed/seti-syntax)
 
 A subtle dark colored syntax theme for Atom. [Seti UI](https://atom.io/themes/seti-ui) also available.
 
