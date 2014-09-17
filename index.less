@@ -137,7 +137,7 @@
 
   // =, +, -, ?, :, !=. &&, in (js)
   &.operator {
-    color: @keyword;
+    color: @keyword-oper; //@keyword;
   }
 
   // can't tell what this does :/
@@ -160,9 +160,15 @@
   &.modifier {
     color: @storage;
   }
-
 }
 
+// STORAGE | java fix
+.meta.class.identifier .storage.modifier, .meta.class .meta.method .storage.modifier {
+  color: @storage;
+}
+.meta.class .storage.modifier {
+  color: @keyword;
+}
 
 .constant {
 
@@ -171,7 +177,7 @@
 
   // \ of ("what\'s")
   &.character.escape {
-    color: @constant;
+    color: @support-const; //@constant;
   }
 
   // all the numbers!
@@ -179,9 +185,9 @@
     color: @numeric;
   }
 
-  // can't tell what this does :/
-  &.other.color {
-    color: @constant;
+  // can't tell what this does :/ //RGB code
+  &.other.color, &.other.rgb-value {
+    color: @numeric; //@constant;
   }
 
   // can't tell what this does :/
@@ -205,6 +211,7 @@
   // foo & bar of function name(foo, bar)
   &.parameter.function {
     color: @function-param;
+    font-style: italic; //add
   }
 }
 
@@ -289,7 +296,7 @@
   }
 
   &.separator {
-    color: @punctuation;
+    color: @punctuation-sep; //@punctuation;
   }
 
   &.definition {
@@ -343,7 +350,7 @@
   }
 
   &.function  {
-    color: @support; // .log of console.log, url of url(http://web.com)
+    color: @support-func; //@support; // .log of console.log, url of url(http://web.com)
 
     // can't tell what this does :/
     &.any-method {
@@ -353,7 +360,7 @@
 
   // {{}} of {{ variable }}
   &.constant {
-    color: @constant;  // none of text-decoration: none;
+    color: @support-const;//@constant;  // none of text-decoration: none;
   }
 
   &.type.property-name.css {
@@ -362,14 +369,24 @@
 }
 
 // .class names in css & scss
-.source .entity.name.tag, .source .entity.other.attribute-name, .meta.tag.inline, .meta.tag.inline .entity {
+.source .entity.name.tag {
+  color: @entity-name-tag; //@class;
+}
+.source .entity.other.attribute-name {
+  color: @attr-string; //@class;
+
+  &.class {
+      color: @entity;
+  }
+}
+.meta.tag.inline, .meta.tag.inline .entity {
   color: @class;
 }
 
   &.tag,
   &.tag .entity {
     color: @tag-entity;
-  }
+  } //TODO error in above sec?
 
 
 .html {
@@ -434,11 +451,18 @@
 
   &.other.inherited-class {
     color: @entity;
+    font-style: italic; //added for java
+
   }
 
   // init in init: function(){} (js)
   &.name.function {
-    color: @entity;
+    color: @entity; //TODO std=gray for python `@name`, but connected with js func
+
+    // Python decorator
+    &.decorator.python {
+        color: @comment;
+    }
   }
 
   &.name.class, &.name.type.class {
@@ -469,7 +493,7 @@
 
 .meta {
   & .class {
-    color: @constant;
+    //color: @constant; //rm
   }
 
   &.link {
@@ -520,11 +544,11 @@
   }
 
   &.changed {
-    color: @markup;
+    color: @yellow;
   }
 
   &.deleted {
-    color: @markup;
+    color: @red;
   }
 
   &.italic {
@@ -537,7 +561,7 @@
   }
 
   &.inserted {
-    color: @markup;
+    color: @green;
   }
 
   &.list {
@@ -551,12 +575,59 @@
   &.raw.inline {
     color: @markup;
   }
+
+  &.underline.link {
+    color: @string; //added
+    text-decoration: underline;
+  }
+}
+
+.source.gfm {
+  .support.quote {
+    color:@numeric; //added
+  }
+  .comment.quote {
+    color: @support; //darken(@numeric, 10%); //added
+  }
+  .comment.hr {
+    color:@numeric; //added
+  }
+}
+
+.gfm {
+
+  // .bold {
+  //   color: @testclr;
+  //   font-weight: bold;
+  // }
+  //
+  // .italic {
+  //   color: @testclr;
+  //   font-style: italic;
+  // }
+
+  .variable.list {
+    color: @numeric;
+    font-weight: bold;
+  }
+
+  .link {
+    color: @comment; // for []()
+
+    .entity {
+      color: @support;
+    }
+  }
 }
 
 .source.gfm .markup {
   -webkit-font-smoothing: auto;
   &.heading {
-    color: @code-font-color;
+    color: @keyword; //@code-font-color;
+    font-weight: bold;
+  }
+  &.raw {
+    color: @entity; //added
   }
 }
 
@@ -564,6 +635,142 @@
   padding-left: 1px;
 }
 
+// Bash
+.source.shell {
+  color: @numeric; //added
+  .storage.modifier {
+    color: @support; //added
+  }
+}
+
+// Markdown-preview modifications
+// .markdown-preview {
+//     // background-color: #fff;
+//     background-color: @code-background;
+//     color: @code-font-color;
+//     code {
+//         // color: #333;
+//         color: @code-font-color;
+//     }
+//
+//     a, a code {
+//         // color: #4183c4;
+//         color: @blue;
+//     }
+//
+//     // Link Colors
+//     a.absent {
+//         // color: #c00;
+//         color: @red;
+//     }
+//
+//     // Headings
+//     h1, h2, h3, h4, h5, h6 {
+//         .octicon-link {
+//             // color: #000;
+//             color: @code-font-color;
+//         }
+//     }
+//
+//     h1 {
+//         // border-bottom: 1px solid #ddd;
+//         // color: #000;
+//         border-bottom: 1px solid @comment;
+//         color: @green;
+//     }
+//     h2 {
+//         // border-bottom: 1px solid #eee;
+//         // color: #000;
+//         border-bottom: 1px solid @comment;
+//         color: @green;
+//     }
+//
+//     h6 {
+//         // color: #777;
+//         color: @comment;
+//     }
+//
+//     hr {
+//         // background: transparent url("atom://markdown-preview/assets/hr.png") repeat-x 0 0;
+//         // color: #ccc;
+//         color: @code-font-color;
+//     }
+//
+//     blockquote {
+//         // border-left: 4px solid #DDD;
+//         // color: #777;
+//         border-left: 4px solid @yellow;
+//         color: @red;
+//     }
+//
+//     // Tables
+//     table {
+//         th, td {
+//             border: 1px solid #ccc;
+//         }
+//         tr {
+//             border-top: 1px solid #ccc;
+//             background-color: #fff;
+//             &:nth-child(2n) {
+//                 background-color: #f8f8f8;
+//           }
+//         }
+//     }
+//
+//     // Framed
+//     span.frame {
+//         & > span {
+//             // border: 1px solid #ddd;
+//             border: 1px solid @code-background;
+//         }
+//         span span {
+//             // color: #333;
+//             color: @code-font-color;
+//         }
+//     }
+//
+//     // Inline code snippets
+//     code, tt {
+//         // border: 1px solid #eaeaea;
+//         // background-color: #f8f8f8;
+//
+//         border: 1px solid lighten(@code-background, 20%);
+//         background-color: lighten(@code-background, 10%);
+//     }
+//
+//     pre {
+//         // background: #f8f8f8;
+//         // border: 1px solid #ccc;
+//
+//         //background: lighten(@code-background, 10%);
+//         //border: 1px solid @code-background;
+//     }
+//
+//     pre.editor-colors {
+//         // background: @syntax-background-color;
+//         // border: 1px solid darken(@syntax-background-color, 10%);
+//
+//         background: lighten(@code-background, 10%);
+//         border: 1px solid lighten(@code-background, 20%);
+//     }
+//
+//     kbd {
+//         // background-color: #dddddd;
+//         // background-image: linear-gradient(#f1f1f1, #ddd);
+//         // background-repeat: repeat-x;
+//         // border: 1px solid #ddd;
+//         // border-bottom-color: #ccc;
+//         // border-right-color: #ccc;
+//
+//         background-color: darken(@syntax-background-color, 10%);
+//         background-image: linear-gradient(lighten(@code-background, 10%), @code-background);
+//         background-repeat: repeat-x;
+//         border: 1px solid @code-background;
+//         border-bottom-color: @code-background;
+//         border-right-color: @code-background;
+//     }
+//
+// }
 
 // PLUGIN SPECIFIC STYLES
 

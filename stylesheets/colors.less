@@ -1,9 +1,28 @@
 // COLORS
-@blue: rgb(85,181,219);
-@green: rgb(159,202,86);
-@yellow: rgb(230,205,105);
-@red: rgb(205,63,69);
-@purple: rgb(160,116,196);
+@blue: #66D9EF;
+@green: #A6E22E;
+@yellow: #E6DB74;
+@red: #F92672;
+@purple: #AE81FF;
+
+@orange: #FD971F;
+@white: #F8F8F0;
+@gray: #CCC;
+@altcomment: #75715E;
+@altblue: #79ABFF;
+@altred: #FF0000;
+
+@lt-blue: lighten(@blue, 20%);
+@lt-red: lighten(@red, 20%);
+
+@testclr: #fbff00;
+
+// Original
+// @blue: rgb(85,181,219);
+// @green: rgb(159,202,86);
+// @yellow: rgb(230,205,105);
+// @red: rgb(205,63,69);
+// @purple: rgb(160,116,196);
 
 
 // GUTTER
@@ -18,24 +37,24 @@
 @code-font-color: rgb(212,215,214); // default editor text
 
 // SYNTAX COLORS
-@comment: rgb(65,83,91); // comments, duhr.
+@comment: @altcomment; //rgb(65,83,91); // comments, duhr.
 @comment-bg: none; // comments, duhr.
 @comment-punc: @comment;
-@string: @blue; // 'value' of var='value', "name.png" or src="name.png"
+@string: @yellow; //@blue; // 'value' of var='value', "name.png" or src="name.png"
 @constant: @red; // true of var x = true, {{}} of {{> hbs_include}}
 @variable: @green; // foo or function(foo), hbs_include of {{> hbs_include}}, http://dom.com/ of url(http://dom.com/)
-@support: @purple; // module of module.exports, color of color: rgb(0,0,0)
-@entity: @blue; // exports of module.exports, <div id= of <div id="#id">, . of .className
-@keyword: @green; // = of var a = b, if of if a = b, px of font-size: 13px;
-@storage: @yellow; // var of var a = b;
+@support: @blue; //@purple; // module of module.exports, color of color: rgb(0,0,0)
+@entity: @green; //@blue; // exports of module.exports, <div id= of <div id="#id">, . of .className
+@keyword: @red; //@green; // = of var a = b, if of if a = b, px of font-size: 13px;
+@storage: @blue; //@yellow; // var of var a = b;
 @meta: @code-font-color; // none of border: none;
-@function-param: @blue;
+@function-param: @orange; //@blue; //TODO std=white
 
 @error: @red;
 
-@regex: @string;
+@regex: @purple; //@string;
 
-@numeric: @red;
+@numeric: @purple; //@red;
 @quotes: @code-font-color;
 
 @markup: @code-font-color;
@@ -53,9 +72,9 @@
 @tag-entity: @blue;
 @element-attr: @green;
 @class: @blue;
-@id: @red;
+@id: @yellow; //@red;
 
-@entity-function: @blue;
+@entity-function: @blue; // note used??
 @brackets: darken(@code-font-color, 30%);
 @punctuation: darken(@code-font-color, 30%);
 
@@ -64,3 +83,13 @@
 
 @search-active-bg: @blue;
 @search-active-border: solid 1px @blue;
+
+// New...
+@keyword-oper: lighten(@keyword, 10%); //@keyword; //e.g. +-/* //TODO std=white
+@punctuation-sep: @white; //@punctuation;
+@support-func: @keyword; //@support;
+@entity-name-tag: @keyword; //@class;
+@attr-string: @string; //@class;
+@support-const: lighten(@constant, 10%); //@constant;
+
+// Markdown
