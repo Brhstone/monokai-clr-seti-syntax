@@ -537,6 +537,11 @@
   color: @code-font-color;
 }
 
+.editor.mini .scroll-view {
+  padding-left: 1px;
+}
+
+// Markdown code
 .markup {
   &.bold {
     color: @markup;
@@ -544,11 +549,11 @@
   }
 
   &.changed {
-    color: @yellow;
+    color: @string;
   }
 
   &.deleted {
-    color: @red;
+    color: @error;
   }
 
   &.italic {
@@ -561,7 +566,7 @@
   }
 
   &.inserted {
-    color: @green;
+    color: @variable;
   }
 
   &.list {
@@ -587,7 +592,7 @@
     color:@numeric; //added
   }
   .comment.quote {
-    color: @support; //darken(@numeric, 10%); //added
+    color: darken(@code-font-color, 20%); //added
   }
   .comment.hr {
     color:@numeric; //added
@@ -627,13 +632,111 @@
     font-weight: bold;
   }
   &.raw {
-    color: @entity; //added
+    color: @function-param; //added
   }
 }
 
-.editor.mini .scroll-view {
-  padding-left: 1px;
+// Markdown preview changes
+.markdown-preview {
+
+    // General
+    background-color: @code-background;
+    color: @code-font-color;
+
+    // Links
+    a, a code {
+        color: @string;
+    }
+    a.absent {
+        color: lighten(@error, 20%);
+    }
+
+    // Headings
+    h1, h2, h3, h4, h5, h6 {
+        color: @keyword;
+    }
+    h1, h2 {
+        border-bottom: 1px dashed @comment;
+    }
+
+    // Line
+    hr {
+        background: @numeric repeat-x 0 0;
+    }
+
+    // Quote
+    blockquote {
+        border-left: 4px solid @numeric;
+        color: @comment;
+    }
+
+    // Tables
+    table {
+        th, td {
+            border: 1px none lighten(@code-background, 10%);
+            // border-bottom: 2px solid lighten(@code-background, 15%);
+        }
+        tr {
+            border-top: 1px none lighten(@code-background, 10%);
+            background-color: lighten(@code-background, 10%);
+            &:nth-child(2n) {
+                background-color: lighten(@code-background, 15%);
+          }
+        }
+    }
+
+    // Framed ???
+    span.frame {
+        & > span {
+            border: 1px solid @code-background;
+        }
+        span span {
+            color: @code-font-color;
+        }
+    }
+
+    // Inline code
+    code {
+        color: @function-param;
+    }
+
+    // Inline code snippets
+    code, tt {
+        border: 1px dashed lighten(@code-background, 20%);
+        background-color: lighten(@code-background, 10%);
+    }
+
+    // ???
+    pre {
+        // background: #f8f8f8;
+        // border: 1px solid #ccc;
+        background: lighten(@code-background, 10%);
+        border: 1px solid @code-background;
+    }
+
+    // Code block
+    pre.editor-colors {
+        background-color: lighten(@code-background, 10%);
+        border: 1px solid lighten(@code-background, 20%);
+    }
+
+    // ???
+    kbd {
+        // background-color: #dddddd;
+        // background-image: linear-gradient(#f1f1f1, #ddd);
+        // background-repeat: repeat-x;
+        // border: 1px solid #ddd;
+        // border-bottom-color: #ccc;
+        // border-right-color: #ccc;
+        background-color: darken(@syntax-background-color, 10%);
+        background-image: linear-gradient(lighten(@code-background, 10%), @code-background);
+        background-repeat: repeat-x;
+        border: 1px solid @code-background;
+        border-bottom-color: @code-background;
+        border-right-color: @code-background;
+    }
 }
+
 
 // Bash
 .source.shell {
@@ -643,134 +746,6 @@
   }
 }
 
-// Markdown-preview modifications
-// .markdown-preview {
-//     // background-color: #fff;
-//     background-color: @code-background;
-//     color: @code-font-color;
-//     code {
-//         // color: #333;
-//         color: @code-font-color;
-//     }
-//
-//     a, a code {
-//         // color: #4183c4;
-//         color: @blue;
-//     }
-//
-//     // Link Colors
-//     a.absent {
-//         // color: #c00;
-//         color: @red;
-//     }
-//
-//     // Headings
-//     h1, h2, h3, h4, h5, h6 {
-//         .octicon-link {
-//             // color: #000;
-//             color: @code-font-color;
-//         }
-//     }
-//
-//     h1 {
-//         // border-bottom: 1px solid #ddd;
-//         // color: #000;
-//         border-bottom: 1px solid @comment;
-//         color: @green;
-//     }
-//     h2 {
-//         // border-bottom: 1px solid #eee;
-//         // color: #000;
-//         border-bottom: 1px solid @comment;
-//         color: @green;
-//     }
-//
-//     h6 {
-//         // color: #777;
-//         color: @comment;
-//     }
-//
-//     hr {
-//         // background: transparent url("atom://markdown-preview/assets/hr.png") repeat-x 0 0;
-//         // color: #ccc;
-//         color: @code-font-color;
-//     }
-//
-//     blockquote {
-//         // border-left: 4px solid #DDD;
-//         // color: #777;
-//         border-left: 4px solid @yellow;
-//         color: @red;
-//     }
-//
-//     // Tables
-//     table {
-//         th, td {
-//             border: 1px solid #ccc;
-//         }
-//         tr {
-//             border-top: 1px solid #ccc;
-//             background-color: #fff;
-//             &:nth-child(2n) {
-//                 background-color: #f8f8f8;
-//           }
-//         }
-//     }
-//
-//     // Framed
-//     span.frame {
-//         & > span {
-//             // border: 1px solid #ddd;
-//             border: 1px solid @code-background;
-//         }
-//         span span {
-//             // color: #333;
-//             color: @code-font-color;
-//         }
-//     }
-//
-//     // Inline code snippets
-//     code, tt {
-//         // border: 1px solid #eaeaea;
-//         // background-color: #f8f8f8;
-//
-//         border: 1px solid lighten(@code-background, 20%);
-//         background-color: lighten(@code-background, 10%);
-//     }
-//
-//     pre {
-//         // background: #f8f8f8;
-//         // border: 1px solid #ccc;
-//
-//         //background: lighten(@code-background, 10%);
-//         //border: 1px solid @code-background;
-//     }
-//
-//     pre.editor-colors {
-//         // background: @syntax-background-color;
-//         // border: 1px solid darken(@syntax-background-color, 10%);
-//
-//         background: lighten(@code-background, 10%);
-//         border: 1px solid lighten(@code-background, 20%);
-//     }
-//
-//     kbd {
-//         // background-color: #dddddd;
-//         // background-image: linear-gradient(#f1f1f1, #ddd);
-//         // background-repeat: repeat-x;
-//         // border: 1px solid #ddd;
-//         // border-bottom-color: #ccc;
-//         // border-right-color: #ccc;
-//
-//         background-color: darken(@syntax-background-color, 10%);
-//         background-image: linear-gradient(lighten(@code-background, 10%), @code-background);
-//         background-repeat: repeat-x;
-//         border: 1px solid @code-background;
-//         border-bottom-color: @code-background;
-//         border-right-color: @code-background;
-//     }
-//
-// }
 
 // PLUGIN SPECIFIC STYLES
 

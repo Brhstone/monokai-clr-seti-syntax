@@ -15,6 +15,9 @@
 @lt-blue: lighten(@blue, 20%);
 @lt-red: lighten(@red, 20%);
 
+@code-bg: rgb(41,43,44);
+@gutter-bg: darken(@code-bg, 5%);
+
 @testclr: #fbff00;
 
 // Original
@@ -28,11 +31,11 @@
 // GUTTER
 @gutter-text: rgb(64,75,83);
 @gutter-text-highlight: @entity;
-@gutter-background: rgb(14,17,18);
-@gutter-background-highlight: rgb(6,7,8);
+@gutter-background: @gutter-bg; //rgb(14,17,18);
+@gutter-background-highlight: darken(@gutter-bg, 3%); //rgb(6,7,8);
 
 // CODE VIEW
-@code-background: rgb(21,23,24); // editor background
+@code-background: @code-bg; //rgb(21,23,24); // editor background
 @code-font: Source Code Pro;
 @code-font-color: rgb(212,215,214); // default editor text
 
@@ -66,7 +69,7 @@
 @cursor-color: @code-font-color;
 @cursor-width: px;
 @selected: rgba(255,255,255,0.2); // selected background color
-@selected-line: rgb(16, 17, 18);
+@selected-line: darken(@code-bg, 3%); //rgb(16, 17, 18);
 
 @tag: @class;
 @tag-entity: @blue;
