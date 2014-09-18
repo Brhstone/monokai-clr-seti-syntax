@@ -1,21 +1,25 @@
 // COLORS
-@blue: #66D9EF;
-@green: #A6E22E;
-@yellow: #E6DB74;
-@red: #F92672;
-@purple: #AE81FF;
+@blue: #66D9EF; //@blue
+@green: #A6E22E; //@green
+@yellow: #E6DB74; //@yellow
+@red: #F92672; //@red
+@purple: #AE81FF; //@purple
 
-@orange: #FD971F;
-@white: #F8F8F0;
+@orange: #FD971F; //@orange
+@altcomment: #75715E; //@altcomment
+
+@white: #F8F8F2; //@white
+@dark: #23241f; //@dark
+
 @gray: #CCC;
-@altcomment: #75715E;
 @altblue: #79ABFF;
 @altred: #FF0000;
 
 @lt-blue: lighten(@blue, 20%);
 @lt-red: lighten(@red, 20%);
 
-@code-bg: rgb(41,43,44);
+//@code-clr: ; //TODO #f8f8f2
+@code-bg: rgb(41,43,44); //TODO #23241f
 @gutter-bg: darken(@code-bg, 5%);
 
 @testclr: #fbff00;
@@ -45,7 +49,7 @@
 @comment-punc: @comment;
 @string: @yellow; //@blue; // 'value' of var='value', "name.png" or src="name.png"
 @constant: @red; // true of var x = true, {{}} of {{> hbs_include}}
-@variable: @green; // foo or function(foo), hbs_include of {{> hbs_include}}, http://dom.com/ of url(http://dom.com/)
+@variable: @purple; //@green; // foo or function(foo), hbs_include of {{> hbs_include}}, http://dom.com/ of url(http://dom.com/)
 @support: @blue; //@purple; // module of module.exports, color of color: rgb(0,0,0)
 @entity: @green; //@blue; // exports of module.exports, <div id= of <div id="#id">, . of .className
 @keyword: @red; //@green; // = of var a = b, if of if a = b, px of font-size: 13px;
